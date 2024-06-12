@@ -1,8 +1,23 @@
+-- Provide User Access
+grant select on all tables in schema bus_details to tom;
+
+-- City Details
+CREATE TABLE City (
+    City_ID int primary key,
+    City_Name varhcar(1000)
+);
+
+INSERT INTO City 
+VALUES
+    (1, 'Chennai');
+
 -- BusDetails
 CREATE TABLE BusDetails (
     BusID INT PRIMARY KEY,
     BusName VARCHAR(50),
-    Type VARCHAR(50)
+    Type VARCHAR(50),
+    City_ID int,
+    FOREIGN KEY (City_ID) REFERENCES City(City_ID)
 );
 
 INSERT INTO BusDetails (BusID, BusName, Type)

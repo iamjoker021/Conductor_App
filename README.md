@@ -34,6 +34,7 @@ I am planning to Build this app via PERN stack
 - Receive the Bus ticket as acknowledgement
 
 ### Good to Have:
+- Scan the QR in the Bus, to auto-get the BusNumber, so user only need to chose the From and To
 - Track the Bus on Real-Time
     - All conductor/driver must use this app, and this app GPS can be used to track the Bus. Since Conductor/Driver is always be present on the Bus
 - Wallet. The user no need to pay every time. He can place ticket and money will be automatically withdrawn from his wallet
@@ -69,6 +70,9 @@ Stack" PERN
 - Frontend (Provide User Interface)
 
 ## Actions:
+- [x] Create Postgres DB with BusDetails Data
+- [x] Create Express App and listen to Port
+- [x] Connect to DB
 - Create Backend with Must Have APIs
     ### User Authentication API
     - [ ] Endpoint for user registration (if required).
@@ -78,7 +82,9 @@ Stack" PERN
     - [ ] Endpoint for user logout.
 
     ### Bus Route Details API
-    - [ ] Endpoint to send the Bus Routes and Fare
+    - [ ] Get List of City
+    - [ ] Endpoint to get List of Bus
+    - [ ] Endpoint to get Route of Bus and Fare by BusNumber
 
     ### Ticket Booking API
     - [ ] Endpoint to accept booking details (From, To, Number of Tickets).
