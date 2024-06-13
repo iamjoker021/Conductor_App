@@ -1,9 +1,9 @@
 import { useEffect, useState } from "react"
 
-const useFetch = (url) => {
+const useFetch = (url, attribute) => {
     const [data, setData] = useState(null);
     const [isPending, setIsPending] = useState(false);
-    const [error, setError] = useState('');
+    const [error, setError] = useState(null);
 
     useEffect(() => {
         fetch(url)
@@ -11,22 +11,27 @@ const useFetch = (url) => {
                 if(response.ok){
                     return response.json();
                 } else {
-                    throw Error('No Cities Found');
+                    throw Error(`No ${attribute} Found`);
                 }
             })
             .then((data) => {
-                console.log('This is data: ',data.city_list);
-                setData(data.city_list);
-                setError(null);
-                setIsPending(false);
+                if(data && data.status){
+                    setData(data[attribute]);
+                    setError(null);
+                    setIsPending(false);
+                } else {
+                    setError('Unable to fetch data');
+                    setIsPending(false);
+                }
+                
             })
             .catch((error) => {
                 setError(error.message);
                 setIsPending(false);
             })
-    }, [])
+    }, [url])
 
-    return { data, isPending, error }
+    return { data, isPending, error };
 }
 
 export default useFetch

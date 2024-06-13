@@ -1,28 +1,27 @@
 import { useState } from 'react';
 import useFetch from '../utils/useFetch'
 import { useNavigate } from 'react-router-dom';
-import { path }  from '../constant/constant';
+import { path }  from '../utils/apiPath';
 import Select from 'react-select';
 
 const ChooseCity = () => {
-    const [selectedOption, setSelectionOption] = useState({});
-    
-    const navigate = useNavigate();
+    const {data: city_list, isPending, error} = useFetch(path.getCity(), 'city_list')
 
+    const [selectedOption, setSelectionOption] = useState({});
+
+    const navigate = useNavigate();
     const handleSubmit = (e) => {
         e.preventDefault();
         if(selectedOption.label) {
-            navigate(`/${selectedOption.value}/bus`);
+            navigate(`/city/${selectedOption.value}/bus`);
         }
     }
-
-    const { data: city, isPending, error } = useFetch(path.getCity)
 
     return ( 
         <div className="form">
             <form onSubmit={handleSubmit}>
                 <Select 
-                    options={city}
+                    options={city_list}
                     placeholder="Search the City"
                     onChange={setSelectionOption}
                     autoFocus
