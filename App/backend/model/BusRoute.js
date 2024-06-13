@@ -1,8 +1,9 @@
-const pool = require('../config/db')
+const pool = require('../config/db');
+const query = require('./queries');
 
-const getAllCityList = (res, req) => {
-    console.log(typeof res);
-        pool.query('select city_id, city_name from bus_details.city')
+const busRoute = {
+    getAllCity : (req, res) => {
+        pool.query(query.busRouteQueries.getAllCity)
             .then((result) => {
                 res.status(200).json({
                     city: result.rows
@@ -16,7 +17,6 @@ const getAllCityList = (res, req) => {
                 })
             })
         }
-
-module.exports = {
-    getAllCityList
 }
+
+module.exports = busRoute
