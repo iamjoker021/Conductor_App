@@ -114,6 +114,11 @@ Stack" PERN
     - [ ] Endpoint for handling errors and exceptions.
     - [ ] Endpoint for fetching system status or configuration details.
 
+- Create Frontend
+    ### Build User Bus Ticket Book pages
+    - [ ] Page to choose City
+    - [ ] Page to choose FROM, TO and NumberOfTickets
+
 ## My Activities
 
 <details>
