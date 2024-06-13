@@ -1,8 +1,11 @@
+import { Link } from 'react-router-dom';
+
 const Home = () => {
+
     return ( 
         <div className="button">
-            <button>Show You Tikcets</button>
-            <button>Place Your Tickets</button>
+            <Link>Show You Tikcets</Link>
+            <Link to="/city">Place Your Tickets</Link>
         </div>
      );
 }
