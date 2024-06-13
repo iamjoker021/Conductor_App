@@ -73,7 +73,7 @@ Stack" PERN
 - [x] Create Postgres DB with BusDetails Data
 - [x] Create Express App and listen to Port
 - [x] Connect to DB
-- Create Backend with Must Have APIs
+- Create Backend with Must Have APIs (ChatGPT helped)
     ### User Authentication API
     - [ ] Endpoint for user registration (if required).
     - [ ] Endpoint for user login using Google SSO.
@@ -135,50 +135,7 @@ Stack" PERN
     <summary>Jun 12</summary>
     <ul>
         <li>Visualizing the Solution</li>
-        <li>Asking ChatGPT for list of APIs for backend. Response: 
-        <details>
-        <code>
-        For building the backend of your Conductor app using the PERN stack (PostgreSQL, Express.js, React.js, Node.js), you'll need to create various APIs to handle different functionalities. Here's a breakdown of the APIs you might need:
-
-    User Authentication API:
-        Endpoint for user registration (if required).
-        Endpoint for user login using Google SSO.
-        Endpoint to generate and send OTP for mobile number authentication.
-        Endpoint to verify OTP.
-        Endpoint for user logout.
-
-    Ticket Booking API:
-        Endpoint to accept booking details (From, To, Number of Tickets).
-        Endpoint to calculate ticket fare.
-        Endpoint to generate QR code for the ticket.
-        Endpoint to handle payment options (G-pay, Net-Bank, etc.).
-        Endpoint to mark the ticket as on-hold after successful payment.
-        Endpoint to send ticket details to the user via SMS or email.
-
-    Wallet API:
-        Endpoint to manage user wallet balance.
-        Endpoint to deduct money from the wallet for ticket booking.
-        Endpoint to refund money to the wallet if the ticket process is not completed.
-
-    Ticket Management API:
-        Endpoint to retrieve user's historical tickets.
-        Endpoint to retrieve active tickets.
-        Endpoint to mark a ticket as used (when scanned by conductor).
-        Endpoint to cancel a ticket and refund money.
-
-    Conductor API:
-        Endpoint for conductor login.
-        Endpoint for conductor to scan QR code for ticket verification.
-        Endpoint to validate the scanned QR code and mark the ticket as used.
-
-    Miscellaneous APIs:
-        Endpoint for handling errors and exceptions.
-        Endpoint for fetching system status or configuration details.
-
-These are the basic APIs you might need to implement the functionalities described. Depending on the complexity and additional features of your app, you might need to expand or modify these APIs accordingly.
-        </code>
-        </details>
-        </li>
+        <li>Asking ChatGPT for list of APIs for backend</li>
         <li>Created Bus Route Data on Postgres</li>
     </ul>
 </details>
