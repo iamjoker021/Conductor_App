@@ -1,65 +1,40 @@
 const pool = require('../config/db');
 const query = require('./queries');
 
+const pool_query = (req, res, query, attribute, param=[]) => {
+    pool.query(query, param)
+        .then((result) => {
+            if (result.rows.length > 0) {
+                const output = { status: true }
+                output[attribute] = result.rows
+                res.status(200).json(output)
+            } else {
+                res.status(404).json({
+                    status: false,
+                    error: "No result found",
+                    message: `Sorry, ${attribute} not found`
+                })
+            }
+        })
+        .catch((error) => {
+            console.log(error);
+            res.status(500).json({
+                status: false,
+                error: `Unable to Fetch ${attribute} Info`,
+                message: error.message
+            })
+        })
+}
+
 const busRoute = {
-    getAllCity : (req, res) => {
-        pool.query(query.busRouteQueries.getAllCity)
-            .then((result) => {
-                res.status(200).json({
-                    city_list: result.rows
-                })
-            })
-            .catch((error) => {
-                console.log(error);
-                res.status(500).json({
-                    error: "Unable to Fetch City Info",
-                    message: error.message
-                })
-            })
-    },
-    getBusForCity: (req,res) => {
-        const city_id = req.params.id;
-        pool.query(query.busRouteQueries.getBusForCity, [city_id])
-            .then((result) => {
-                if (result.rows.length > 0) {
-                    res.status(200).json({
-                        bus_list: result.rows
-                    })
-                } else {
-                    res.status(404).json({
-                        error: "No result found",
-                        message: `Sorry, No Bus found for the City_ID: ${city_id}`
-                    })
-                }
-            })
-            .catch((error) => {
-                res.status(500).json({
-                    error: "Unable to fetch Bus Info",
-                    message: error.message
-                })
-            })
+    getAllCity: (req, res) => pool_query(req, res, query.busRouteQueries.getAllCity, 'city_list'),
+    getBusForCity: (req, res) => {
+        const city_id = req.params.id
+        pool_query(req, res, query.busRouteQueries.getBusForCity, 'bus_list', [city_id])
     },
     getRouteAndFareByBus: (req, res) => {
         const bus_id = req.params.id;
-        pool.query(query.busRouteQueries.getRouteAndFareByBus, [bus_id])
-            .then((result) => {
-                if (result.rows.length > 0) {
-                    res.status(200).json({
-                        route_list_fare: result.rows
-                    })
-                } else {
-                    res.status(404).json({
-                        error: "No result found",
-                        message: `Sorry, No Route found for the Bus_Id: ${bus_id}`
-                    })
-                }
-            })
-            .catch((error) => {
-                res.status(500).json({
-                    error: "Unable to fetch Bus Info",
-                    message: error.message
-                })
-            })
+        pool_query(req, res, query.busRouteQueries.getRouteAndFareByBus, 'route_list_fare', [bus_id])
     }
 }
 
