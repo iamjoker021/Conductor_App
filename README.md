@@ -182,4 +182,11 @@ These are the basic APIs you might need to implement the functionalities describ
         <li>Created Bus Route Data on Postgres</li>
     </ul>
 </details>
-  
+<details>
+    <summary>Jun 13</summary>
+    <ul>
+        <li>Create React App setup</li>
+        <li>Created City Choose Page</li>
+        <li>Created Bus Number Choose Page</li>
+    </ul>
+</details>
