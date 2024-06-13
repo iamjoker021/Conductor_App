@@ -1,56 +1,28 @@
-import { useEffect, useState } from "react"
-import { path }  from '../constant/constant';
+import { useState } from 'react';
+import useFetch from '../utils/useFetch'
 import { useNavigate } from 'react-router-dom';
+import { path }  from '../constant/constant';
 import Select from 'react-select';
 
 const ChooseCity = () => {
-    const [data, setData] = useState(null);
     const [selectedOption, setSelectionOption] = useState({});
-    const [isPending, setIsPending] = useState(false);
-    const [error, setError] = useState('');
+    
     const navigate = useNavigate();
 
     const handleSubmit = (e) => {
         e.preventDefault();
         if(selectedOption.label) {
             navigate(`/${selectedOption.value}/bus`);
-        } else {
-            setError('Please select a valid City in the DropDown');
         }
     }
 
-    useEffect(() => {
-        setData([
-            {value: 0, label: "Erode"},
-            {value: 1, label: "Chennai"},
-            {value: 2, label: "Trichy"}
-        ]);
-    
-        fetch(path.getCity)
-            .then((response) => {
-                if(response.ok){
-                    return response.json();
-                } else {
-                    throw Error('No Cities Found');
-                }
-            })
-            .then((data) => {
-                console.log('This is data: ',data.city_list);
-                setData(data.city_list);
-                setError(null);
-                setIsPending(false);
-            })
-            .catch((error) => {
-                setError(error.message);
-                setIsPending(false);
-            })
-    }, [])
+    const { data: city, isPending, error } = useFetch(path.getCity)
 
     return ( 
         <div className="form">
             <form onSubmit={handleSubmit}>
                 <Select 
-                    options={data}
+                    options={city}
                     placeholder="Search the City"
                     onChange={setSelectionOption}
                     autoFocus

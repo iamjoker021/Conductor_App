@@ -116,7 +116,8 @@ Stack" PERN
 
 - Create Frontend
     ### Build User Bus Ticket Book pages
-    - [ ] Page to choose City
+    - [x] Page to choose City
+    - [x] Page to choose BusNo
     - [ ] Page to choose FROM, TO and NumberOfTickets
 
 ## My Activities
