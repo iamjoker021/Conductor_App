@@ -13,4 +13,4 @@ app.use(morgan('dev'));
 // List to PORT
 app.listen(process.env.BACKEND_PORT);
 
-app.use('/api/bus-route', busRoute);
+app.use('/api/bus-details', busRoute);

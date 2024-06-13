@@ -82,9 +82,9 @@ Stack" PERN
     - [ ] Endpoint for user logout.
 
     ### Bus Route Details API
-    - [ ] Get List of City
-    - [ ] Endpoint to get List of Bus
-    - [ ] Endpoint to get Route of Bus and Fare by BusNumber
+    - [x] Get List of City
+    - [x] Endpoint to get List of Bus for the City
+    - [x] Endpoint to get Route of Bus and Fare by BusNumber
 
     ### Ticket Booking API
     - [ ] Endpoint to accept booking details (From, To, Number of Tickets).
