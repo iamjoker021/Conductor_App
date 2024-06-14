@@ -5,7 +5,7 @@ import { path }  from '../utils/apiPath';
 import Select from 'react-select';
 
 const ChooseCity = () => {
-    const {data: city_list, isPending, error} = useFetch(path.getCity(), 'city_list')
+    const {data: city_list, isPending, error} = useFetch(...path.getCity())
 
     const [selectedOption, setSelectionOption] = useState({});
 
@@ -21,7 +21,7 @@ const ChooseCity = () => {
         <div className="form">
             <form onSubmit={handleSubmit}>
                 <Select 
-                    options={city_list}
+                    options={city_list || {}}
                     placeholder="Search the City"
                     onChange={setSelectionOption}
                     autoFocus

@@ -7,7 +7,7 @@ import Select from 'react-select';
 const ChooseBus = () => {
     const {city_id} = useParams();
 
-    const {data: bus_list, isPending, error} = useFetch(path.getBusForCity(city_id), 'bus_list')
+    const {data: bus_list, isPending, error} = useFetch(...path.getBusForCity(city_id))
 
     const [selectedOption, setSelectionOption] = useState({});
 
