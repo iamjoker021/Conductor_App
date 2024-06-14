@@ -7,7 +7,7 @@ import { path } from "../utils/apiPath";
 const ChooseRouteAndFare = () => {
     const {bus_id} = useParams();
 
-    const [ticketCount, setTicketCount] = useState(1);
+    const [ticketCount, setTicketCount] = useState(0);
     // const [fare, setFare] = useState(0);
 
     const { data: stops, isPending, error } = useFetch(...path.getRouteFareForBus(bus_id))
@@ -59,8 +59,8 @@ const ChooseRouteAndFare = () => {
                     placeholder="Place Number of Tickets"
                     required
                 />
-                <p>Ticket Fare: { ticketCount * ( selectedOptionTo.fare - selectedOptionFrom.fare ) || 0 }</p>
-                {!isPending && selectedOptionFrom.label && selectedOptionTo.label && ticketCount && <button type="submit">Place Ticket</button>}
+                <p>Ticket Fare: { ticketCount * ( selectedOptionTo.fare - selectedOptionFrom.fare ) }</p>
+                {(!isPending && selectedOptionFrom.label && selectedOptionTo.label && ticketCount) && <button type="submit">Place Ticket</button>}
                 {!(selectedOptionFrom.label && selectedOptionTo.label && ticketCount ) && <button type="submit" disabled>Place Ticket</button>}
                 {isPending && <button type="submit" disabled>Loading</button>}
                 {error && <div className="error"><p>{ error }</p></div>}
