@@ -69,6 +69,10 @@ Stack" PERN
 - Backend (Handle Ticket generation)
 - Frontend (Provide User Interface)
 
+## Demo
+- Demo 1
+    - ![Bus Booking](./artifacts/Jun14_Conductor_app.webm)
+
 ## Actions:
 - [x] Create Postgres DB with BusDetails Data
 - [x] Create Express App and listen to Port
@@ -145,5 +149,11 @@ Stack" PERN
         <li>Create React App setup</li>
         <li>Created City Choose Page</li>
         <li>Created Bus Number Choose Page</li>
+    </ul>
+</details>
+<details>
+    <summary>Jun 14</summary>
+    <ul>
+        <li>Create From-To Page</li>
     </ul>
 </details>
