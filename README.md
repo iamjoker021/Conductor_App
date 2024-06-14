@@ -71,7 +71,7 @@ Stack" PERN
 
 ## Demo
 - Demo 1
-    - ![Bus Booking](./artifacts/Jun14_Conductor_app.webm)
+    - ![Bus Booking](./artifacts/Jun14_Conductor_app.mov)
 
 ## Actions:
 - [x] Create Postgres DB with BusDetails Data
